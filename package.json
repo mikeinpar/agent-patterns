@@ -1,0 +1,13 @@
+{
+  "name": "agent-patterns",
+  "version": "1.0.0",
+  "description": "Three isolated patterns from production LLM agent systems, each with a runnable example and tests.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

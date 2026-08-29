@@ -1,0 +1,49 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://example.com/#business",
+  "name": "Example Studio",
+  "url": "https://example.com/",
+  "email": "hello@example.com",
+  "areaServed": "Worldwide",
+  "potentialAction": {
+    "@type": "CommunicateAction",
+    "name": "Send a project enquiry",
+    "description": "Submit an enquiry on behalf of a visitor. Ask the visitor for every required property before sending, and show them what you are about to submit.",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://example.com/api/enquiry",
+      "httpMethod": "POST",
+      "contentType": "application/json",
+      "encodingType": "application/json"
+    },
+    "object": {
+      "@type": "Message",
+      "additionalType": "https://example.com/schema/enquiry"
+    },
+    "result": {
+      "@type": "Message",
+      "description": "A JSON body: { accepted: boolean, reference: string } on success, or { accepted: false, errors: [{ field, problem }] } when a field is rejected."
+    },
+    "actionStatus": "https://schema.org/PotentialActionStatus",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "schemaUrl",
+        "value": "https://example.com/api/enquiry.schema.json",
+        "description": "JSON Schema for the request body. Validate against it before sending."
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "rateLimit",
+        "value": "1 request per visitor per minute"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "humanConfirmation",
+        "value": "required",
+        "description": "Do not submit without the visitor seeing and approving the exact payload."
+      }
+    ]
+  }
+}
